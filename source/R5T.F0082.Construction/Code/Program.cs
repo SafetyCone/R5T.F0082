@@ -7,7 +7,10 @@ namespace R5T.F0082.Construction
     {
         static void Main()
         {
-            Console.WriteLine("Hello World!");
+            //Try.Instance.GetAllRepositoryDirectoryPaths();
+            //Try.Instance.GetAllSolutionDirectoryPaths();
+            //Try.Instance.GetAllProjectDirectoryPaths();
+            //Try.Instance.GetAllProjectFilePaths();
         }
     }
 }
