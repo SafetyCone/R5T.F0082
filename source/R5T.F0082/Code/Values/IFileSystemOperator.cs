@@ -45,7 +45,7 @@ namespace R5T.F0082
                     DirectoryNames.Instance.Source);
 
                 // Only if the solution directory exists should it be returned.
-                if(F0000.FileSystemOperator.Instance.DirectoryExists(solutionDirectoryPath))
+                if(SystemFileSystemOperator.Instance.DirectoryExists(solutionDirectoryPath))
                 {
 				    yield return solutionDirectoryPath;
                 }
@@ -66,6 +66,40 @@ namespace R5T.F0082
 
 			return solutionDirectoryPaths;
 		}
+
+        public IEnumerable<string> GetAllSolutionFilePaths(
+            IEnumerable<string> solutionDirectoryPaths,
+            ILogger logger)
+        {
+            foreach (var solutionDirectoryPath in solutionDirectoryPaths)
+            {
+                logger.LogInformation($"Processing solution directory:\n\t{solutionDirectoryPath}");
+
+                var solutionFilePaths = SystemFileSystemOperator.Instance.FindChildFilesInDirectoryByFileExtension(
+                    solutionDirectoryPath,
+                    FileExtensions.Instance.SolutionFile);
+
+                foreach (var solutionFilePath in solutionFilePaths)
+                {
+                    yield return solutionFilePath;
+                }
+            }
+        }
+
+        public IEnumerable<string> GetAllSolutionFilePaths_FromRepositoriesDirectoryPaths(
+            IEnumerable<string> repositoriesDirectoryPaths,
+            ILogger logger)
+        {
+            var solutionDirectoryPaths = this.GetAllSolutionDirectoryPaths_FromRepositoriesDirectoryPaths(
+                 repositoriesDirectoryPaths,
+                 logger);
+
+            var solutionFilePaths = this.GetAllSolutionFilePaths(
+                solutionDirectoryPaths,
+                logger);
+
+            return solutionFilePaths;
+        }
 
         public IEnumerable<string> GetAllProjectDirectoryPaths(
             IEnumerable<string> solutionDirectoryPaths,
