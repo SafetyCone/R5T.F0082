@@ -16,7 +16,7 @@ namespace R5T.F0082.Construction
         public void GetAllProjectFilePaths()
         {
             LoggingOperator.Instance.InConsoleLoggerContext_Synchronous(
-                nameof(GetAllProjectDirectoryPaths),
+                nameof(GetAllProjectFilePaths),
                 logger =>
                 {
                     var repositoriesDirectoryPaths = RepositoriesDirectoryPaths.Instance.AllOfMine;
