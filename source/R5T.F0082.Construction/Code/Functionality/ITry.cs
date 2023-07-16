@@ -4,6 +4,7 @@ using System.Linq;
 using R5T.F0033;
 using R5T.F0035;
 using R5T.T0132;
+using R5T.T0159.Extensions;
 using R5T.Z0015;
 using R5T.Z0022;
 
@@ -23,7 +24,7 @@ namespace R5T.F0082.Construction
 
                     var projectFilePaths = FileSystemOperator.Instance.GetAllProjectFilePaths_FromRepositoriesDirectoryPaths(
                         repositoriesDirectoryPaths,
-                        logger)
+                        logger.ToTextOutput())
                         .OrderAlphabetically()
                         .Now();
 
@@ -43,7 +44,7 @@ namespace R5T.F0082.Construction
 
                     var projectDirectoryPaths = FileSystemOperator.Instance.GetAllProjectDirectoryPaths_FromRepositoriesDirectoryPaths(
                         repositoriesDirectoryPaths,
-                        logger)
+                        logger.ToTextOutput())
                         .OrderAlphabetically()
                         .Now();
 
@@ -63,7 +64,7 @@ namespace R5T.F0082.Construction
 
                     var solutionDirectoryPaths = FileSystemOperator.Instance.GetAllSolutionDirectoryPaths_FromRepositoriesDirectoryPaths(
                         repositoriesDirectoryPaths,
-                        logger)
+                        logger.ToTextOutput())
                         .OrderAlphabetically()
                         .Now();
 
@@ -83,7 +84,7 @@ namespace R5T.F0082.Construction
 
 					var enumerateRepositoryDirectoryPaths = FileSystemOperator.Instance.GetAllRepositoryDirectoryPaths(
 						repositoriesDirectoryPaths,
-						logger);
+						logger.ToTextOutput());
 
 					var repositoryDirectoryPaths = enumerateRepositoryDirectoryPaths
 						.OrderAlphabetically()
