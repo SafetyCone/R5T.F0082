@@ -152,7 +152,7 @@ namespace R5T.F0082
 
                 var projectFilePaths = SystemFileSystemOperator.Instance.EnumerateChildFilePaths(
                     projectDirectoryPath,
-                    F0000.SearchPatternGenerator.Instance.AllFilesWithExtension(
+                    F0000.SearchPatternGenerator.Instance.Files_WithExtension(
                         FileExtensions.Instance.CSharpProject))
                     ;
 
