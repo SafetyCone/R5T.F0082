@@ -39,12 +39,12 @@ namespace R5T.F0082
             {
                 textOutput.WriteInformation($"Processing repository directory:\n\t{repositoryDirectoryPath}");
 
-                var solutionDirectoryPath = F0002.PathOperator.Instance.GetDirectoryPath(
+                var solutionDirectoryPath = Instances.PathOperator.Get_DirectoryPath(
                     repositoryDirectoryPath,
                     DirectoryNames.Instance.Source);
 
                 // Only if the solution directory exists should it be returned.
-                if(SystemFileSystemOperator.Instance.DirectoryExists(solutionDirectoryPath))
+                if(SystemFileSystemOperator.Instance.Exists_Directory(solutionDirectoryPath))
                 {
 				    yield return solutionDirectoryPath;
                 }
@@ -115,7 +115,7 @@ namespace R5T.F0082
                 foreach (var projectDirectoryPath in projectDirectoryPaths)
                 {
                     // Do not include the .vs directory.
-                    var isVsDirectoryPath = F0002.PathOperator.Instance.DirectoryNameOfDirectoryPathIs(
+                    var isVsDirectoryPath = Instances.PathOperator.Is_DirectoryName_OfDirectoryPath(
                         projectDirectoryPath,
                         DirectoryNames.Instance._vs);
 
