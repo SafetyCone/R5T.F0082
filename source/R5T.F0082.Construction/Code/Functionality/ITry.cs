@@ -6,11 +6,13 @@ using R5T.F0035;
 using R5T.T0132;
 using R5T.T0159.Extensions;
 using R5T.Z0015;
-using R5T.Z0022;
 
 
 namespace R5T.F0082.Construction
 {
+    /// <summary>
+    /// These are tries of various library functionality.
+    /// </summary>
 	[FunctionalityMarker]
 	public partial interface ITry : IFunctionalityMarker
 	{
@@ -20,7 +22,7 @@ namespace R5T.F0082.Construction
                 nameof(GetAllProjectFilePaths),
                 logger =>
                 {
-                    var repositoriesDirectoryPaths = RepositoriesDirectoryPaths.Instance.AllOfMine;
+                    var repositoriesDirectoryPaths = Instances.RepositoriesDirectoryPathsSets.All_Internal;
 
                     var projectFilePaths = FileSystemOperator.Instance.GetAllProjectFilePaths_FromRepositoriesDirectoryPaths(
                         repositoriesDirectoryPaths,
@@ -40,7 +42,7 @@ namespace R5T.F0082.Construction
                 nameof(GetAllProjectDirectoryPaths),
                 logger =>
                 {
-                    var repositoriesDirectoryPaths = RepositoriesDirectoryPaths.Instance.AllOfMine;
+                    var repositoriesDirectoryPaths = Instances.RepositoriesDirectoryPathsSets.All_Internal;
 
                     var projectDirectoryPaths = FileSystemOperator.Instance.GetAllProjectDirectoryPaths_FromRepositoriesDirectoryPaths(
                         repositoriesDirectoryPaths,
@@ -60,7 +62,7 @@ namespace R5T.F0082.Construction
                 nameof(GetAllSolutionDirectoryPaths),
                 logger =>
                 {
-                    var repositoriesDirectoryPaths = RepositoriesDirectoryPaths.Instance.AllOfMine;
+                    var repositoriesDirectoryPaths = Instances.RepositoriesDirectoryPathsSets.All_Internal;
 
                     var solutionDirectoryPaths = FileSystemOperator.Instance.GetAllSolutionDirectoryPaths_FromRepositoriesDirectoryPaths(
                         repositoriesDirectoryPaths,
@@ -80,9 +82,9 @@ namespace R5T.F0082.Construction
 				nameof(GetAllRepositoryDirectoryPaths),
 				logger =>
 				{
-					var repositoriesDirectoryPaths = RepositoriesDirectoryPaths.Instance.AllOfMine;
+					var repositoriesDirectoryPaths = Instances.RepositoriesDirectoryPathsSets.All_Internal;
 
-					var enumerateRepositoryDirectoryPaths = FileSystemOperator.Instance.GetAllRepositoryDirectoryPaths(
+                    var enumerateRepositoryDirectoryPaths = FileSystemOperator.Instance.GetAllRepositoryDirectoryPaths(
 						repositoriesDirectoryPaths,
 						logger.ToTextOutput());
 

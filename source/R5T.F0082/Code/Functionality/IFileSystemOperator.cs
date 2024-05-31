@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-using R5T.T0131;
+using R5T.T0132;
 using R5T.T0159;
 
 using SystemFileSystemOperator = R5T.F0000.FileSystemOperator;
@@ -9,8 +9,8 @@ using SystemFileSystemOperator = R5T.F0000.FileSystemOperator;
 
 namespace R5T.F0082
 {
-	[ValuesMarker]
-	public partial interface IFileSystemOperator : IValuesMarker
+	[FunctionalityMarker]
+	public partial interface IFileSystemOperator : IFunctionalityMarker
 	{
 		public IEnumerable<string> GetAllRepositoryDirectoryPaths(
 			IEnumerable<string> repositoriesDirectoryPaths,
@@ -41,7 +41,7 @@ namespace R5T.F0082
 
                 var solutionDirectoryPath = Instances.PathOperator.Get_DirectoryPath(
                     repositoryDirectoryPath,
-                    DirectoryNames.Instance.Source);
+                    Instances.DirectoryNames.Repository_Source_DirectoryName);
 
                 // Only if the solution directory exists should it be returned.
                 if(SystemFileSystemOperator.Instance.Exists_Directory(solutionDirectoryPath))
@@ -76,7 +76,7 @@ namespace R5T.F0082
 
                 var solutionFilePaths = SystemFileSystemOperator.Instance.FindChildFilesInDirectoryByFileExtension(
                     solutionDirectoryPath,
-                    FileExtensions.Instance.SolutionFile);
+                    Instances.FileExtensions.Solution_File);
 
                 foreach (var solutionFilePath in solutionFilePaths)
                 {
@@ -117,7 +117,7 @@ namespace R5T.F0082
                     // Do not include the .vs directory.
                     var isVsDirectoryPath = Instances.PathOperator.Is_DirectoryName_OfDirectoryPath(
                         projectDirectoryPath,
-                        DirectoryNames.Instance._vs);
+                        Instances.DirectoryNames.VisualStudio_Solution_HiddenDirectoryName);
 
                     if(!isVsDirectoryPath)
                     {
@@ -153,7 +153,7 @@ namespace R5T.F0082
                 var projectFilePaths = SystemFileSystemOperator.Instance.EnumerateChildFilePaths(
                     projectDirectoryPath,
                     F0000.SearchPatternGenerator.Instance.Files_WithExtension(
-                        FileExtensions.Instance.CSharpProject))
+                        Instances.FileExtensions.CSharp_ProjectFile))
                     ;
 
                 foreach (var projectFilePath in projectFilePaths)
