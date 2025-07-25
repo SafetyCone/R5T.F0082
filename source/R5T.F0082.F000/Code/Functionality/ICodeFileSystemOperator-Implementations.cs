@@ -24,7 +24,7 @@ namespace R5T.F0082.F000.Implementations
             var solutionDirectoryPaths = Instances.CodeFileSystemOperator.Enumerate_SolutionDirectoryPaths(
                 repositoriesDirectoryPathToken,
                 repositoriesDirectoryPaths)
-                .Now();
+                .ToArray();
 
             var output = this.Enumerate_ProjectFilePaths_ViaSolutionChildAndGrandchildDirectoriesSearch(
                 OverloadToken<SolutionDirectoryPath>.Instance,
@@ -168,7 +168,7 @@ namespace R5T.F0082.F000.Implementations
             var output = this.Enumerate_ProjectFilePaths_ViaSolutionChildDirectoriesSearch(
                 solutionDirectoryPaths,
                 outputWriter)
-                .Now();
+                .ToArray();
 
             return output;
         }
@@ -182,7 +182,7 @@ namespace R5T.F0082.F000.Implementations
         {
             var output = this.Enumerate_ProjectFilePaths_ViaSolutionChildDirectoriesSearch(
                 solutionDirectoryPaths)
-                .Now();
+                .ToArray();
 
             return output;
         }
@@ -192,7 +192,7 @@ namespace R5T.F0082.F000.Implementations
         {
             var output = this.Enumerate_ProjectFilePaths_ViaRepositoryDirectorySearch(
                 repositoryDirectoryPaths)
-                .Now();
+                .ToArray();
 
             return output;
         }
@@ -204,7 +204,7 @@ namespace R5T.F0082.F000.Implementations
             var output = this.Enumerate_ProjectFilePaths_ViaRepositoryDirectorySearch(
                 repositoryDirectoryPaths,
                 outputWriter)
-                .Now();
+                .ToArray();
 
             return output;
         }
@@ -280,7 +280,7 @@ namespace R5T.F0082.F000.Implementations
             => this.Enumerate_ProjectFilePaths_ViaRepositoryDirectorySearch(
                 repositoryDirectoryPathToken,
                 repositoryDirectoryPaths
-                    .Now(),
+                    .ToArray(),
                 progressWriter);
 
         public IEnumerable<string> Enumerate_ProjectFilePaths_ViaRepositoryDirectorySearch(
@@ -350,7 +350,7 @@ namespace R5T.F0082.F000.Implementations
                     this.Enumerate_ProjectDirectoryPaths_AllChildDirectories_ExceptHidden(
                         solutionDirectoryPath)
                 )
-                .Now();
+                .ToArray();
 
             return projectDirectoryPaths;
         }
@@ -403,7 +403,7 @@ namespace R5T.F0082.F000.Implementations
                     this.Enumerate_ProjectDirectoryPaths_ChildDirectories_WithProjectFile(
                         solutionDirectoryPath)
                 )
-                .Now();
+                .ToArray();
 
             return projectDirectoryPaths;
         }

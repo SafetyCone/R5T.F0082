@@ -34,12 +34,12 @@ namespace R5T.F0082.F000
 
         public string[] Get_RepositoryDirectoryPaths(string repositoriesDirectoryPath)
             => this.Enumerate_RepositoryDirectoryPaths(repositoriesDirectoryPath)
-                .Now();
+                .ToArray();
 
         public string[] Get_RepositoryDirectoryPaths(
             IEnumerable<string> repositoriesDirectoryPaths)
             => this.Enumerate_RepositoryDirectoryPaths(repositoriesDirectoryPaths)
-                .Now();
+                .ToArray();
 
         public string[] Get_RepositoryDirectoryPaths(
             params string[] repositoriesDirectoryPaths)
@@ -88,13 +88,13 @@ namespace R5T.F0082.F000
             OverloadToken<RepositoryDirectoryPath> repositoryDirectoryPathToken,
             string repositoryDirectoryPath)
             => this.Enumerate_SolutionsDirectoryPaths(repositoryDirectoryPath)
-                .Now();
+                .ToArray();
 
         public string[] Get_SolutionsDirectoryPaths(
             OverloadToken<RepositoryDirectoryPath> repositoryDirectoryPathToken,
             IEnumerable<string> repositoryDirectoryPaths)
             => this.Enumerate_SolutionsDirectoryPaths(repositoryDirectoryPaths)
-                .Now();
+                .ToArray();
 
         public string[] Get_SolutionsDirectoryPaths(
             OverloadToken<RepositoryDirectoryPath> repositoryDirectoryPathToken,
@@ -147,7 +147,7 @@ namespace R5T.F0082.F000
             => this.Enumerate_SolutionsDirectoryPaths(
                 repositoriesDirectoryPathToken,
                 repositoriesDirectoryPath)
-                .Now();
+                .ToArray();
 
         public string[] Get_SolutionsDirectoryPaths(
             OverloadToken<RepositoriesDirectoryPath> repositoriesDirectoryPathToken,
@@ -155,7 +155,7 @@ namespace R5T.F0082.F000
             => this.Enumerate_SolutionsDirectoryPaths(
                 repositoriesDirectoryPathToken,
                 repositoryDirectoryPaths)
-                .Now();
+                .ToArray();
 
         public string[] Get_SolutionsDirectoryPaths(
             OverloadToken<RepositoriesDirectoryPath> repositoriesDirectoryPathToken,
@@ -217,7 +217,7 @@ namespace R5T.F0082.F000
             => this.Enumerate_SolutionDirectoryPaths(
                 repositoriesDirectoryPathToken,
                 repositoriesDirectoryPaths)
-                .Now();
+                .ToArray();
 
         #endregion
 
@@ -272,7 +272,7 @@ namespace R5T.F0082.F000
             => this.Enumerate_SolutionFilePaths(
                 repositoriesDirectoryPathToken,
                 repositoriesDirectoryPaths)
-                .Now();
+                .ToArray();
 
         #endregion
 
@@ -365,7 +365,7 @@ namespace R5T.F0082.F000
             => this.Enumerate_ProjectFilePaths(
                 repositoriesDirectoryPathToken,
                 repositoriesDirectoryPaths)
-                .Now();
+                .ToArray();
 
         /// <inheritdoc cref="Get_ProjectFilePaths(OverloadToken{RepositoriesDirectoryPath}, IEnumerable{string})"/>
         public string[] Get_ProjectFilePaths_ForRepositories(IEnumerable<string> repositoriesDirectoryPaths)
